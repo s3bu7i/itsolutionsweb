@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPro Solutions - Professional IT Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366F1;
+            --secondary: #8B5CF6;
+            --accent: #EC4899;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --gradient1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --glow: 0 0 40px rgba(99, 102, 241, 0.4);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            overflow-x: hidden;
+            background: var(--dark);
+        }
+
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 8px;
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            box-shadow: var(--glow);
+        }
+
+        .lang-switcher button {
+            background: transparent;
+            border: none;
+            padding: 8px 20px;
+            cursor: pointer;
+            font-weight: 700;
+            color: #94a3b8;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-switcher button.active {
+            background: var(--gradient1);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            color: white;
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '●';
+            color: #EC4899;
+            position: absolute;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--gradient1);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: pulse 8s ease-in-out infinite;
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            animation: pulse 6s ease-in-out infinite reverse;
+            border-radius: 50%;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+            50% { transform: scale(1.3) rotate(180deg); opacity: 0.8; }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-text .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient1);
+            border-radius: 2px;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: var(--gradient1);
+            color: white;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(99, 102, 241, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 30px;
+            padding: 2rem;
+            box-shadow: var(--glow);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 0;
+            right: 0;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            bottom: 100px;
+            left: 50px;
+            animation-delay: 1s;
+        }
+
+        .floating-element:nth-child(3) {
+            top: 150px;
+            left: 0;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .icon-large {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .services {
+            padding: 120px 30px;
+            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%);
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 5rem;
+            font-size: 1.2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+            padding: 3rem;
+            border-radius: 30px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(99, 102, 241, 0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 30px 80px rgba(99, 102, 241, 0.3);
+        }
+
+        .service-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient1);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            transition: all 0.4s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card p {
+            color: #94a3b8;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .features {
+            background: var(--dark);
+            padding: 120px 30px;
+            position: relative;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(236, 72, 153, 0.08));
+            border-radius: 30px;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .feature-item:hover::before {
+            left: 100%;
+        }
+
+        .feature-item:hover {
+            transform: scale(1.08);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(236, 72, 153, 0.3);
+        }
+
+        .feature-number {
+            font-size: 4rem;
+            font-weight: 900;
+            background: var(--gradient2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .feature-item h3 {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .contact {
+            padding: 120px 30px;
+            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%);
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+        }
+
+        .contact-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+            padding: 4rem;
+            border-radius: 40px;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: white;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: rgba(15, 23, 42, 0.5);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #64748b;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--dark);
+            color: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #0a0f1e;
+            color: white;
+            padding: 4rem 30px 2rem;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            background: var(--gradient1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #94a3b8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            color: #64748b;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: var(--gradient1);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                backdrop-filter: blur(20px);
+                border-top: 1px solid rgba(99, 102, 241, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                height: 300px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .contact-form {
+                padding: 2.5rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .lang-switcher {
+                top: 10px;
+                right: 10px;
+                padding: 5px;
+            }
+
+            .lang-switcher button {
+                padding: 6px 15px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switcher">
+        <button onclick="switchLang('az')" class="active" id="lang-az">AZ</button>
+        <button onclick="switchLang('en')" id="lang-en">EN</button>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">TechPro</div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home"><span class="nav-text" data-az="Ana Səhifə" data-en="Home">Ana Səhifə</span></a></li>
+                <li><a href="#services"><span class="nav-text" data-az="Xidmətlər" data-en="Services">Xidmətlər</span></a></li>
+                <li><a href="#about"><span class="nav-text" data-az="Haqqımızda" data-en="About">Haqqımızda</span></a></li>
+                <li><a href="#contact"><span class="nav-text" data-az="Əlaqə" data-en="Contact">Əlaqə</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span class="hero-word" data-az="Professional" data-en="Professional">Professional</span><br>
+                    <span class="highlight hero-word" data-az="IT Həlləri" data-en="IT Solutions">IT Həlləri</span><br>
+                    <span class="hero-word" data-az="Biznesiniz Üçün" data-en="For Your Business">Biznesiniz Üçün</span>
+                </h1>
+                <p class="hero-desc" data-az="Server arxitekturası, şəbəkə infrastrukturu, web development və texniki dəstək - tam IT həllər bir yerdə" 
+                   data-en="Server architecture, network infrastructure, web development and technical support - complete IT solutions in one place">
+                    Server arxitekturası, şəbəkə infrastrukturu, web development və texniki dəstək - tam IT həllər bir yerdə
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary"><span data-az="Əlaqə Saxlayın" data-en="Get in Touch">Əlaqə Saxlayın</span></a>
+                    <a href="#services" class="btn btn-secondary"><span data-az="Xidmətlərimiz" data-en="Our Services">Xidmətlərimiz</span></a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-element">
+                    <div class="icon-large">💻</div>
+                    <h3 style="color: white; font-size: 1.2rem;" data-az="24/7 Dəstək" data-en="24/7 Support">24/7 Dəstək</h3>
+                </div>
+                <div class="floating-element">
+                    <div class="icon-large">🚀</div>
+                    <h3 style="color: white; font-size: 1.2rem;" data-az="Sürətli Həll" data-en="Fast Solution">Sürətli Həll</h3>
+                </div>
+                <div class="floating-element">
+                    <div class="icon-large">🛡️</div>
+                    <h3 style="color: white; font-size: 1.2rem;" data-az="Təhlükəsizlik" data-en="Security">Təhlükəsizlik</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title" data-az="Xidmətlərimiz" data-en="Our Services">Xidmətlərimiz</h2>
+            <p class="section-subtitle" data-az="Müasir texnologiyalar və professional yanaşma ilə tam IT həllər" 
+               data-en="Complete IT solutions with modern technologies and professional approach">
+                Müasir texnologiyalar və professional yanaşma ilə tam IT həllər
+            </p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🖥️</div>
+                    <h3 data-az="Server Həlləri" data-en="Server Solutions">Server Həlləri</h3>
+                    <p data-az="Server təmiri, arxitektura qurulması, konfiqurasiya və optimizasiya xidmətləri" 
+                       data-en="Server repair, architecture setup, configuration and optimization services">
+                        Server təmiri, arxitektura qurulması, konfiqurasiya və optimizasiya xidmətləri
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3 data-az="Şəbəkə İnfrastrukturu" data-en="Network Infrastructure">Şəbəkə İnfrastrukturu</h3>
+                    <p data-az="Şəbəkə çəkilməsi, konfiqurasiya, təhlükəsizlik və monitoring xidmətləri" 
+                       data-en="Network installation, configuration, security and monitoring services">
+                        Şəbəkə çəkilməsi, konfiqurasiya, təhlükəsizlik və monitoring xidmətləri
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3 data-az="Kompyuter Təmiri" data-en="Computer Repair">Kompyuter Təmiri</h3>
+                    <p data-az="Sürətli və keyfiyyətli kompyuter təmiri, profilaktika və yeniləmə" 
+                       data-en="Fast and quality computer repair, maintenance and upgrades">
+                        Sürətli və keyfiyyətli kompyuter təmiri, profilaktika və yeniləmə
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3 data-az="Web Development" data-en="Web Development">Web Development</h3>
+                    <p data-az="Müasir və funksional veb saytların hazırlanması, dəstəklənməsi və yeniləmələr" 
+                       data-en="Development, support and updates of modern and functional websites">
+                        Müasir və funksional veb saytların hazırlanması, dəstəklənməsi və yeniləmələr
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3 data-az="IT Təhlükəsizliyi" data-en="IT Security">IT Təhlükəsizliyi</h3>
+                    <p data-az="Kibertəhlükəsizlik, data qorunması, firewall və antivirus həlləri" 
+                       data-en="Cybersecurity, data protection, firewall and antivirus solutions">
+                        Kibertəhlükəsizlik, data qorunması, firewall və antivirus həlləri
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3 data-az="Cloud Həlləri" data-en="Cloud Solutions">Cloud Həlləri</h3>
+                    <p data-az="Cloud server qurulması, miqrasiiya və idarəetmə xidmətləri" 
+                       data-en="Cloud server setup, migration and management services">
+                        Cloud server qurulması, miqrasiiya və idarəetmə xidmətləri
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3 data-az="Mobil Tətbiqlər" data-en="Mobile Applications">Mobil Tətbiqlər</h3>
+                    <p data-az="iOS və Android platformaları üçün mobil tətbiq hazırlanması" 
+                       data-en="Mobile application development for iOS and Android platforms">
+                        iOS və Android platformaları üçün mobil tətbiq hazırlanması
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛒</div>
+                    <h3 data-az="IT Avadanlıq Satışı" data-en="IT Equipment Sales">IT Avadanlıq Satışı</h3>
+                    <p data-az="Keyfiyyətli kompüter, server və şəbəkə avadanlıqlarının satışı" 
+                       data-en="Sales of quality computers, servers and network equipment">
+                        Keyfiyyətli kompüter, server və şəbəkə avadanlıqlarının satışı
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3 data-az="Data Analitikası" data-en="Data Analytics">Data Analitikası</h3>
+                    <p data-az="Biznes analitikası, data mining və hesabat sistemlərinin qurulması" 
+                       data-en="Business analytics, data mining and reporting system setup">
+                        Biznes analitikası, data mining və hesabat sistemlərinin qurulması
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="about">
+        <div class="container">
+            <h2 class="section-title" data-az="Niyə Bizi Seçməlisiniz?" data-en="Why Choose Us?">Niyə Bizi Seçməlisiniz?</h2>
+            <p class="section-subtitle" data-az="Professional komanda, sürətli xidmət və uzunmüddətli dəstək" 
+               data-en="Professional team, fast service and long-term support">
+                Professional komanda, sürətli xidmət və uzunmüddətli dəstək
+            </p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-number">10+</div>
+                    <h3 data-az="İllik Təcrübə" data-en="Years Experience">İllik Təcrübə</h3>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">500+</div>
+                    <h3 data-az="Həll Olunmuş Layihə" data-en="Completed Projects">Həll Olunmuş Layihə</h3>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">24/7</div>
+                    <h3 data-az="Texniki Dəstək" data-en="Technical Support">Texniki Dəstək</h3>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">100%</div>
+                    <h3 data-az="Müştəri Məmnuniyyəti" data-en="Client Satisfaction">Müştəri Məmnuniyyəti</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-wrapper">
+            <h2 class="section-title" data-az="Bizimlə Əlaqə" data-en="Contact Us">Bizimlə Əlaqə</h2>
+            <p class="section-subtitle" data-az="Layihəniz haqqında məsləhət almaq üçün bizimlə əlaqə saxlayın" 
+               data-en="Contact us to get advice about your project">
+                Layihəniz haqqında məsləhət almaq üçün bizimlə əlaqə saxlayın
+            </p>
+            <div class="contact-form">
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label><span data-az="Ad və Soyad" data-en="Full Name">Ad və Soyad</span></label>
+                        <input type="text" required class="form-input" data-az-placeholder="Adınızı daxil edin" data-en-placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label><span data-az="Email" data-en="Email">Email</span></label>
+                        <input type="email" required class="form-input" data-az-placeholder="Email ünvanınız" data-en-placeholder="Your email address">
+                    </div>
+                    <div class="form-group">
+                        <label><span data-az="Telefon" data-en="Phone">Telefon</span></label>
+                        <input type="tel" required class="form-input" data-az-placeholder="Telefon nömrəniz" data-en-placeholder="Your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label><span data-az="Xidmət Növü" data-en="Service Type">Xidmət Növü</span></label>
+                        <select required class="form-select">
+                            <option value="" data-az="Seçin" data-en="Select">Seçin</option>
+                            <option value="server" data-az="Server Həlləri" data-en="Server Solutions">Server Həlləri</option>
+                            <option value="network" data-az="Şəbəkə" data-en="Network">Şəbəkə</option>
+                            <option value="repair" data-az="Təmir" data-en="Repair">Təmir</option>
+                            <option value="web" data-az="Web Development" data-en="Web Development">Web Development</option>
+                            <option value="security" data-az="IT Təhlükəsizliyi" data-en="IT Security">IT Təhlükəsizliyi</option>
+                            <option value="cloud" data-az="Cloud Həlləri" data-en="Cloud Solutions">Cloud Həlləri</option>
+                            <option value="mobile" data-az="Mobil Tətbiqlər" data-en="Mobile Apps">Mobil Tətbiqlər</option>
+                            <option value="other" data-az="Digər" data-en="Other">Digər</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><span data-az="Mesajınız" data-en="Your Message">Mesajınız</span></label>
+                        <textarea rows="5" required class="form-input" data-az-placeholder="Mesajınızı yazın" data-en-placeholder="Write your message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; position: relative; z-index: 1;">
+                        <span data-az="Göndər" data-en="Send">Göndər</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TechPro Solutions</h3>
+                <p data-az="Professional IT xidmətləri və həllər" data-en="Professional IT services and solutions">
+                    Professional IT xidmətləri və həllər
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3 data-az="Xidmətlər" data-en="Services">Xidmətlər</h3>
+                <a href="#"><span data-az="Server Həlləri" data-en="Server Solutions">Server Həlləri</span></a>
+                <a href="#"><span data-az="Şəbəkə İnfrastrukturu" data-en="Network Infrastructure">Şəbəkə İnfrastrukturu</span></a>
+                <a href="#"><span data-az="Web Development" data-en="Web Development">Web Development</span></a>
+                <a href="#"><span data-az="IT Təhlükəsizliyi" data-en="IT Security">IT Təhlükəsizliyi</span></a>
+            </div>
+            <div class="footer-section">
+                <h3 data-az="Əlaqə" data-en="Contact">Əlaqə</h3>
+                <p>Email: info@techpro.az</p>
+                <p><span data-az="Telefon: +994 XX XXX XX XX" data-en="Phone: +994 XX XXX XX XX">Telefon: +994 XX XXX XX XX</span></p>
+                <p><span data-az="Ünvan: Bakı, Azərbaycan" data-en="Address: Baku, Azerbaijan">Ünvan: Bakı, Azərbaycan</span></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TechPro Solutions. <span data-az="Bütün hüquqlar qorunur." data-en="All rights reserved.">Bütün hüquqlar qorunur.</span></p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'az';
+
+        function switchLang(lang) {
+            currentLang = lang;
+            
+            // Update button states
+            document.getElementById('lang-az').classList.toggle('active', lang === 'az');
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            
+            // Update all text elements
+            document.querySelectorAll('[data-az][data-en]').forEach(el => {
+                const newText = el.getAttribute('data-' + lang);
+                el.textContent = newText;
+            });
+
+            // Update form inputs placeholders
+            document.querySelectorAll('.form-input').forEach(input => {
+                const placeholder = input.getAttribute('data-' + lang + '-placeholder');
+                if (placeholder) {
+                    input.placeholder = placeholder;
+                }
+            });
+
+            // Update select options
+            document.querySelectorAll('.form-select option').forEach(option => {
+                const text = option.getAttribute('data-' + lang);
+                if (text) {
+                    option.textContent = text;
+                }
+            });
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            // Button loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>' + (currentLang === 'az' ? 'Göndərilir...' : 'Sending...') + '</span>';
+            
+            // Form data collect
+            const formData = {
+                full_name: form.querySelector('input[type="text"]').value,
+                email: form.querySelector('input[type="email"]').value,
+                phone: form.querySelector('input[type="tel"]').value,
+                service_type: form.querySelector('select').value,
+                message: form.querySelector('textarea').value
+            };
+            
+            try {
+                // Backend-ə göndər
+                const response = await fetch('http://localhost:8000/api/contact/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    const message = currentLang === 'az' ? data.message : data.message_en;
+                    alert('✅ ' + message);
+                    form.reset();
+                } else {
+                    const errorMsg = currentLang === 'az' 
+                        ? 'Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.' 
+                        : 'An error occurred. Please try again.';
+                    alert('❌ ' + errorMsg);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                const errorMsg = currentLang === 'az' 
+                    ? 'Əlaqə xətası. Zəhmət olmasa internet bağlantınızı yoxlayın.' 
+                    : 'Connection error. Please check your internet connection.';
+                alert('❌ ' + errorMsg);
+            } finally {
+                // Button reset
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Initialize placeholders
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.form-input').forEach(input => {
+                const placeholder = input.getAttribute('data-az-placeholder');
+                if (placeholder) {
+                    input.placeholder = placeholder;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
